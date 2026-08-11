@@ -11,7 +11,7 @@ select
 	Ps.EnglishProductSubcategoryName,
 	sum(S.SalesAmount) as TotalSales,
 	RANK() OVER (
-	ORDER by sum(S.SalesAmount)  desc) as SubcategoryRankInSales
+	ORDER by sum(S.SalesAmount)  desc) as SubcategorySalesRank
 from dbo.DimProductSubcategory as Ps
 inner join dbo.DimProduct as P
 	on Ps.ProductSubcategoryKey = P.ProductSubcategoryKey
@@ -24,7 +24,7 @@ select
 	Ps.EnglishProductSubcategoryName,
 	sum(S.TotalProductCost) as TotalCost,
 	RANK() OVER (
-	ORDER by sum(S.TotalProductCost)  desc) as SubcategoryRankInCost
+	ORDER by sum(S.TotalProductCost)  desc) as SubcategoryCostRank
 from dbo.DimProductSubcategory as Ps
 inner join dbo.DimProduct as P
 	on Ps.ProductSubcategoryKey = P.ProductSubcategoryKey
@@ -38,7 +38,7 @@ select
 	Ps.EnglishProductSubcategoryName,
 	sum(S.SalesAmount) - sum(S.TotalProductCost) as TotalProfit,
 	RANK() OVER (
-	ORDER by sum(S.SalesAmount) - sum(S.TotalProductCost)  desc) as ProfitRankInSubcategory
+	ORDER by sum(S.SalesAmount) - sum(S.TotalProductCost)  desc) as SubcategoryProfitRank
 from dbo.DimProductSubcategory as Ps
 inner join dbo.DimProduct as P
 	on Ps.ProductSubcategoryKey = P.ProductSubcategoryKey
@@ -79,11 +79,11 @@ select
 	concat(cast ((sum(S.SalesAmount) - sum(S.TotalProductCost))* 100.0/sum(s.SalesAmount)
 			as decimal(10,2)),'%') as ProfitMargin,
 	RANK() OVER (
-	ORDER by sum(S.SalesAmount) - sum(S.TotalProductCost)  desc) as ProfitRankSubcategory,
+	ORDER by sum(S.SalesAmount) - sum(S.TotalProductCost)  desc) as OrderLineProfitRank,
 	RANK() OVER (
-	ORDER by sum(S.SalesAmount)  desc) as SubcategoryRankSales,
+	ORDER by sum(S.SalesAmount)  desc) as OrderLineSalesRank,
 	RANK() OVER (
-	ORDER by sum(S.TotalProductCost)  desc) as SubcategoryRankCost
+	ORDER by sum(S.TotalProductCost)  desc) as OrderLineCostRank
 from dbo.DimProductSubcategory as Ps
 inner join dbo.DimProduct as P
 	on Ps.ProductSubcategoryKey = P.ProductSubcategoryKey
@@ -107,11 +107,11 @@ select
 	concat(cast ((sum(S.SalesAmount) - sum(S.TotalProductCost))* 100.0/sum(s.SalesAmount)
 			as decimal(10,2)),'%') as ProfitMargin,
 	RANK() OVER (
-	ORDER by sum(S.SalesAmount) - sum(S.TotalProductCost)  desc) as ProfitRankSubcategory,
+	ORDER by sum(S.SalesAmount) - sum(S.TotalProductCost)  desc) as OrderLineProfitRank,
 	RANK() OVER (
-	ORDER by sum(S.SalesAmount)  desc) as SubcategoryRankSales,
+	ORDER by sum(S.SalesAmount)  desc) as OrderLineSalesRank,
 	RANK() OVER (
-	ORDER by sum(S.TotalProductCost)  desc) as SubcategoryRankCost
+	ORDER by sum(S.TotalProductCost)  desc) as OrderLineCostRank
 from dbo.DimProductSubcategory as Ps
 inner join dbo.DimProduct as P
 	on Ps.ProductSubcategoryKey = P.ProductSubcategoryKey
