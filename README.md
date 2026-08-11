@@ -32,19 +32,18 @@ The analysis answers questions such as:
 
 ## Prerequisites
 
-- A Mac capable of running VMware Fusion
-- VMware Fusion with a Windows virtual machine
+- A Windows computer or Windows virtual machine
 - Microsoft SQL Server
 - SQL Server Management Studio
 - The `AdventureWorksDW2022` sample database
 
 ## Development environment
 
-The SQL was developed and tested with SQL Server Management Studio inside a Windows virtual machine running through VMware Fusion on macOS.
+The SQL was developed and tested with SQL Server Management Studio inside a Windows virtual machine running through VMware Fusion on macOS. VMware Fusion describes the development setup used for this project; it is not required to run the SQL.
 
 ## How to run
 
-1. Start the Windows virtual machine in VMware Fusion.
+1. Open the Windows computer or Windows virtual machine.
 2. Open SQL Server Management Studio and connect to SQL Server.
 3. Confirm that `AdventureWorksDW2022` is installed.
 4. Open `Presentation.sql`.
