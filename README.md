@@ -32,9 +32,11 @@ The analysis answers questions such as:
 
 ## Prerequisites
 
-- A Windows computer or Windows virtual machine
-- Microsoft SQL Server
-- SQL Server Management Studio
+- Access to Microsoft SQL Server through one of these environments:
+  - A Windows computer
+  - A Windows virtual machine
+  - A SQL Server Linux container running with Docker on a supported host
+- A compatible SQL client, such as SQL Server Management Studio or `sqlcmd`
 - The `AdventureWorksDW2022` sample database
 
 ## Development environment
@@ -43,13 +45,16 @@ The SQL was developed and tested with SQL Server Management Studio inside a Wind
 
 ## How to run
 
-1. Open the Windows computer or Windows virtual machine.
-2. Open SQL Server Management Studio and connect to SQL Server.
+1. Start the SQL Server environment: Windows, a Windows virtual machine, or a supported Docker container.
+2. Connect to SQL Server using a compatible SQL client.
 3. Confirm that `AdventureWorksDW2022` is installed.
 4. Open `Presentation.sql`.
 5. Execute the script and review the seven result sets in order.
 
-Microsoft provides the sample database and restoration instructions in the [official AdventureWorks documentation](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure).
+Microsoft provides:
+
+- The sample database and restoration instructions in the [official AdventureWorks documentation](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure)
+- Instructions for running [SQL Server Linux container images with Docker](https://learn.microsoft.com/en-us/sql/linux/install-upgrade/quickstart-install-docker)
 
 ## Notes
 
